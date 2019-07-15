@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuiltInDelegatesTest.cs" />
+    <Compile Include="CollectionsSampleTest.cs" />
     <Compile Include="DelegatesSampleTest.cs" />
     <Compile Include="EventsSampleTest.cs" />
     <Compile Include="IndexersSampleTest.cs" />

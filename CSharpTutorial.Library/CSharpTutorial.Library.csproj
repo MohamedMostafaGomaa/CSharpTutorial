@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuiltInDelegates.cs" />
+    <Compile Include="CollectionsSample.cs" />
     <Compile Include="DelegatesSample.cs" />
     <Compile Include="EventsSample.cs" />
+    <Compile Include="GenericCollectionsSample.cs" />
     <Compile Include="IndexersSample.cs" />
     <Compile Include="Nullables.cs" />
     <Compile Include="PropertiesSample.cs" />

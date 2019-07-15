@@ -43,11 +43,14 @@ namespace CSharpTutorial.Library
             set;
         }
     }
-    class Student : Person
+    public class Student : Person
     {
         private string code = "N.A";
         private string name = "N.A";
         private int age = 0;
+
+        public int StudentID;
+        public string StudentName;
 
         // Declare a Code property of type string:
         public string Code
@@ -100,4 +103,22 @@ namespace CSharpTutorial.Library
 
         }
     }
+
+
+    public class StudentDictionaryComparer : IEqualityComparer<KeyValuePair<int, Student>>
+    {
+        public bool Equals(KeyValuePair<int, Student> x, KeyValuePair<int, Student> y)
+        {
+            if (x.Key == y.Key && (x.Value.StudentID == y.Value.StudentID) && (x.Value.StudentName == y.Value.StudentName))
+                return true;
+
+            return false;
+        }
+
+        public int GetHashCode(KeyValuePair<int, Student> obj)
+        {
+            return obj.Key.GetHashCode();
+        }
+    }
+
 }
