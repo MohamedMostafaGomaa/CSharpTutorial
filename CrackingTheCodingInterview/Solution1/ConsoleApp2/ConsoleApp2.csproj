@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ch 01. Arrays and Strings\Ch 01. Arrays and Strings.csproj" />
+    <ProjectReference Include="..\ctci.Contracts\ctci.Contracts.csproj" />
+    <ProjectReference Include="..\ctci.Library\ctci.Library.csproj" />
+    <ProjectReference Include="..\ctci\ctci.csproj" />
+  </ItemGroup>
+
+</Project>
