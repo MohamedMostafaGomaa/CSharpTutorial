@@ -85,6 +85,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch 16. Moderate", "Cracking
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch 17. Hard", "CrackingTheCodingInterview\Solution2\Ch 17. Hard\Ch 17. Hard.csproj", "{A0BD29BE-9342-4983-84EC-8E165AC04D47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ctci.Test", "ctci.Test\ctci.Test.csproj", "{9E96934A-1831-4D31-9413-8C8E3D78233E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +241,10 @@ Global
 		{A0BD29BE-9342-4983-84EC-8E165AC04D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0BD29BE-9342-4983-84EC-8E165AC04D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0BD29BE-9342-4983-84EC-8E165AC04D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E96934A-1831-4D31-9413-8C8E3D78233E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E96934A-1831-4D31-9413-8C8E3D78233E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E96934A-1831-4D31-9413-8C8E3D78233E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E96934A-1831-4D31-9413-8C8E3D78233E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -280,6 +286,7 @@ Global
 		{0E7DB71A-B4DD-480C-9F07-9114E3419008} = {8614EAA9-07B6-4F4B-94CF-4EC046AB67C4}
 		{6BDDFFA8-8E87-4900-87A1-F72728E4EBF9} = {8614EAA9-07B6-4F4B-94CF-4EC046AB67C4}
 		{A0BD29BE-9342-4983-84EC-8E165AC04D47} = {8614EAA9-07B6-4F4B-94CF-4EC046AB67C4}
+		{9E96934A-1831-4D31-9413-8C8E3D78233E} = {F1EAE37B-941D-45CC-8B36-E7974278553C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6240CBC-746B-498C-8980-72F43BD76437}

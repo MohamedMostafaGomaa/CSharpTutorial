@@ -48,5 +48,33 @@ namespace HackerrankAlgorithms.Logic
         }
 
 
+        public static string QueueUsingTwoStacks(String[] Arr)
+        {
+            string output = string.Empty;
+            Stack<string> stack1 = new Stack<string>();
+            Stack<string> stack2 = new Stack<string>();
+
+            foreach (var str in Arr)
+            {
+                stack1.Push(str);
+            }
+
+            while (stack1.Count > 0)
+            {
+                stack2.Push(stack1.Pop());
+            }
+
+            while (stack2.Count > 0)
+            {
+                output += stack2.Pop() + ",";
+            }
+
+
+            return output;
+        }
+
+
+
+
     }
 }

@@ -6,7 +6,7 @@ namespace Chapter01
 {
     public class Q1_02_Check_Permutation : Question
     {
-        private bool IsPermutation(string original, string valueToTest)
+        public bool IsPermutation(string original, string valueToTest)
         {
             if (original.Length != valueToTest.Length)
             {
@@ -24,7 +24,7 @@ namespace Chapter01
             return original.Equals(valueToTest);
         }
 
-        private bool IsPermutation2(string original, string valueToTest)
+        public bool IsPermutation2(string original, string valueToTest)
         {
             if (original.Length != valueToTest.Length)
             {
