@@ -36,7 +36,7 @@ namespace Chapter01
             return size;
         }
 
-        private string CompressBetter(string str)
+        public string CompressBetter(string str)
         {
             var size = CountCompression(str);
 
@@ -67,6 +67,34 @@ namespace Chapter01
             sb.Append(count);
 
             return sb.ToString();
+        }
+
+
+        public static string CompressLowerCase(string source)
+        {
+            if (string.IsNullOrEmpty(source)) return string.Empty;
+
+            source = source.Trim().ToLowerInvariant();
+            var dest = new StringBuilder();
+
+            var lastChar = source[0];
+            var count = 0;
+            foreach (var c in source)
+            {
+                if (lastChar != c)
+                {
+                    dest.AppendFormat("{0}{1}", lastChar, count);
+                    lastChar = c;
+                    count = 1;
+                }
+                else
+                {
+                    count++;
+                }
+            }
+            dest.AppendFormat("{0}{1}", lastChar, count);
+
+            return dest.Length < source.Length ? dest.ToString() : source;
         }
 
         public override void Run()

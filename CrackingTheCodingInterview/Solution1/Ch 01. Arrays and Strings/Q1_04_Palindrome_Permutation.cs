@@ -1,11 +1,15 @@
 using ctci.Contracts;
 using System;
+using System.Linq;
 
 namespace Chapter01
 {
+    //A palindrome is a word or phrase that is the same forwards and backwards.
+    //A permutation is a rearrangement of letters.
+    //The palindrome does not need to be limited to just dictionary words. 
     public class Q1_04_Palindrome_Permutation : Question
     {
-        public static int GetCharNumber(char c)
+        private static int GetCharNumber(char c)
         {
             var val = char.ToLower(c) - 'a';
             if (0 <= val && val <= 25)
@@ -15,7 +19,7 @@ namespace Chapter01
             return -1;
         }
 
-        public static int[] BuildCharFrequencyTable(String phrase)
+        private static int[] BuildCharFrequencyTable(String phrase)
         {
             int[] table = new int[26];
             foreach (char c in phrase)
@@ -31,7 +35,7 @@ namespace Chapter01
 
         #region Solution 1
 
-        public static bool CheckMaxOneOdd(int[] table)
+        private static bool CheckMaxOneOdd(int[] table)
         {
             bool foundOdd = false;
             foreach (int count in table)
@@ -42,12 +46,18 @@ namespace Chapter01
                     {
                         return false;
                     }
+                    // if the count becomes odd after setting foundOdd = true,
+                    //this means the word or phrase is not the same forwards and backwards.
                     foundOdd = true;
                 }
             }
             return true;
         }
 
+        //Implementing this algorithm is fairly straightforward.
+        //We use a hash table to count how many times each character appears.
+        //Then, we iterate through the hash table and ensure that no more than one character has an odd count. 
+        //This algorithm takes O ( N) time, where N is the length of the string. 
         public static bool IsPermutationOfPalindrome(String phrase)
         {
             int[] table = BuildCharFrequencyTable(phrase);
@@ -58,6 +68,14 @@ namespace Chapter01
 
         #region Solution 2
 
+
+        //We can't optimize the big O time here since any algorithm will always have
+        //to look through the entire string. However, we can make some smaller
+        //incremental improvements. Because this is a relatively simple problem,
+        //it can be worthwhile to discuss some small optimizations or
+        //at least some tweaks. Instead of checking the number of odd counts at the end,
+        //we can check as we go along.
+        //Then, as soon as we get to the end, we have our answer. 
         public static bool IsPermutationOfPalindrome2(String phrase)
         {
             int countOdd = 0;
@@ -73,12 +91,14 @@ namespace Chapter01
                     {
                         countOdd++;
                     }
-                    else {
+                    else
+                    {
                         countOdd--;
                     }
                 }
             }
-            return countOdd <= 1;
+            // Means that 2 or more will make it not permutation.
+            return countOdd <= 1; 
         }
 
         #endregion Solution 2
@@ -87,7 +107,7 @@ namespace Chapter01
 
         /* Toggle the ith bit in the integer. */
 
-        public static int Toggle(int bitVector, int index)
+        private static int Toggle(int bitVector, int index)
         {
             if (index < 0) return bitVector;
 
@@ -96,7 +116,8 @@ namespace Chapter01
             {
                 bitVector |= mask;
             }
-            else {
+            else
+            {
                 bitVector &= ~mask;
             }
             return bitVector;
@@ -105,7 +126,7 @@ namespace Chapter01
         /* Create bit vector for string. For each letter with value i,
          * toggle the ith bit. */
 
-        public static int MarkBitForOddCharacterCount(String phrase)
+        private static int MarkBitForOddCharacterCount(String phrase)
         {
             int bitVector = 0;
             foreach (char c in phrase.ToCharArray())
@@ -119,7 +140,7 @@ namespace Chapter01
         /* Check that exactly one bit is set by subtracting one from the
          * integer and ANDing it with the original integer. */
 
-        public static bool CheckExactlyOneBitSet(int bitVector)
+        private static bool CheckExactlyOneBitSet(int bitVector)
         {
             return (bitVector & (bitVector - 1)) == 0;
         }
@@ -131,6 +152,29 @@ namespace Chapter01
         }
 
         #endregion Solution 3
+
+        //Count every Char
+        //Check if there is odd count
+        //Check if the odd count equals 1 to make sure it can be the same forwards and backwards
+        public static bool IsPalindromePermutation(string source)
+        {
+            var cleanSource = source.ToLowerInvariant().Replace(" ", string.Empty);
+
+            var groupByChar = cleanSource.GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count());
+
+
+            // odd
+            var hasOddCountOfChar = cleanSource.Length % 2 == 1;
+
+            if (hasOddCountOfChar)
+            {
+                var countOfOddChar = groupByChar.Count(pair => pair.Value % 2 == 1);
+                return countOfOddChar == 1;
+            }
+
+            // even
+            return groupByChar.All(pair => pair.Value % 2 == 0);
+        }
 
         public override void Run()
         {
@@ -150,7 +194,8 @@ namespace Chapter01
                 {
                     Console.WriteLine("Agree: " + a);
                 }
-                else {
+                else
+                {
                     Console.WriteLine("Disagree: " + a + ", " + b + ", " + c);
                 }
                 Console.WriteLine();

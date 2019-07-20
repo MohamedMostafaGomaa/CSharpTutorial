@@ -1,11 +1,15 @@
 ﻿using ctci.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Chapter01
 {
+    //Check Permutation: Given two strings,
+    //write a method to decide if one is a permutation of the other
     public class Q1_02_Check_Permutation : Question
     {
+        //Sort the strings. 
         public bool IsPermutation(string original, string valueToTest)
         {
             if (original.Length != valueToTest.Length)
@@ -24,6 +28,7 @@ namespace Chapter01
             return original.Equals(valueToTest);
         }
 
+        //Check if the two strings have identical character counts. 
         public bool IsPermutation2(string original, string valueToTest)
         {
             if (original.Length != valueToTest.Length)
@@ -55,6 +60,44 @@ namespace Chapter01
             }
 
             return true;
+        }
+
+        //Sort the strings. 
+        // O(3n lg(n))
+        public bool IsPermutationOf_sort(string source, string other)
+        {
+            if (source.Length != other.Length) { return false; }
+
+            var sortedSource = source.OrderBy(c => c).ToArray();
+            var sortedOther = other.OrderBy(c => c).ToArray();
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (sortedSource[i] != sortedOther[i])
+                    return false;
+            }
+            return true;
+
+        }
+
+        //Check if the two strings have identical character counts. 
+        // O(3n)
+        public bool IsPermutationOf(string source, string other)
+        {
+            if (source.Length != other.Length) { return false; }
+
+            var charMap = new int[char.MaxValue];
+
+            foreach (var c in source)
+            {
+                charMap[c]++;
+            }
+
+            foreach (var c in other)
+            {
+                charMap[c]--;
+            }
+
+            return charMap.All(i => i == 0);
         }
 
         public override void Run()

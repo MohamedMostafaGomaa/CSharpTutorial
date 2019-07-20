@@ -6,7 +6,7 @@ namespace Chapter01
 {
     public class Q1_07_Rotate_Matrix : Question
     {
-        private void Rotate(int[][] matrix, int n)
+        public int[][] Rotate(int[][] matrix, int n)
         {
             for (var layer = 0; layer < n / 2; ++layer)
             {
@@ -31,6 +31,34 @@ namespace Chapter01
                     matrix[i][last] = top; // right <- saved top
                 }
             }
+            return matrix;
+        }
+
+        public static T[][] Rotate<T>(T[][] matrix)
+        {
+            var size = matrix.Length;
+            for (int layer = 0; layer < size / 2; ++layer)
+            {
+                int first = layer;
+                int last = size - 1 - layer;
+                for (int i = first; i < last; ++i)
+                {
+                    int offset = i - first;
+                    T top = matrix[first][i]; // save top
+                    // left -> top
+                    matrix[first][i] = matrix[last - offset][first];
+
+                    // bottom -> left
+                    matrix[last - offset][first] = matrix[last][last - offset];
+
+                    // right -> bottom
+                    matrix[last][last - offset] = matrix[i][last];
+
+                    // top -> right
+                    matrix[i][last] = top; // right <- saved top
+                }
+            }
+            return matrix;
         }
 
         public override void Run()

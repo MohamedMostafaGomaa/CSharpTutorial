@@ -46,7 +46,6 @@ namespace ArraysAndStrings
             return input.CompressLowerCase();
         }
 
-
         [TestCase("aa", ExpectedResult = "aa")]
         public string Should_return_source_when_compressed_is_not_less(string input)
         {
