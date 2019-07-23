@@ -37,11 +37,11 @@ namespace Chapter01
         public static T[][] Rotate<T>(T[][] matrix)
         {
             var size = matrix.Length;
-            for (int layer = 0; layer < size / 2; ++layer)
+            for (int layer = 0; layer < size - 2; layer++)
             {
                 int first = layer;
                 int last = size - 1 - layer;
-                for (int i = first; i < last; ++i)
+                for (int i = first; i < last; i++)
                 {
                     int offset = i - first;
                     T top = matrix[first][i]; // save top
