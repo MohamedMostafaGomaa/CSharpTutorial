@@ -38,18 +38,31 @@ namespace DataStructuresAndAlgorithms.Test
         [Test]
         // [TestCase(new int[] { 1, 2, 3, 4, 5 }, 2)]
         //[TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 }, 3)]
-        [TestCase(4)]
+        //[TestCase(4)]
+        [TestCase(13)]
         public void CheckTest3(int key)
         {
+            //Hashtable ht = new Hashtable()
+            //    {
+            //        { 1, "One" },
+            //        { 2, "Two" },
+            //        { 3, "Three" },
+            //        { 4, "Four" },
+            //        { 5, null },
+            //        { "Fv", "Five" },
+            //        { 8.5F, 8.5 },
+            //        { 13, "Therteen" },
+
+            //    };
+
             Hashtable ht = new Hashtable()
                 {
                     { 1, "One" },
                     { 2, "Two" },
                     { 3, "Three" },
                     { 4, "Four" },
-                    { 5, null },
-                    { "Fv", "Five" },
-                    { 8.5F, 8.5 }
+                    { 13, "Therteen" },
+
                 };
             SearchingTechniques sample = new SearchingTechniques();
 

@@ -1,6 +1,7 @@
 ﻿using ctci.Contracts;
 using ctci.Library;
 using System;
+using System.Linq;
 
 namespace Chapter01
 {
@@ -185,6 +186,32 @@ namespace Chapter01
             AssortedMethods.PrintMatrix(matrix2);
 
             Console.WriteLine(MatricesAreEqual(matrix1, matrix2) ? "Equal" : "Not Equal");
+        }
+
+
+        public int[,] SetZeroRowCol(int[,] source)
+        {
+            var height = source.GetLength(0);
+            var width = source.GetLength(1);
+
+            var zeroPoints = (from x in Enumerable.Range(0, width)
+                              from y in Enumerable.Range(0, height)
+                              where source[y, x] == 0
+                              select new { x, y })
+                                .ToArray();
+
+            for (var x = 0; x < width; x++)
+            {
+                for (var y = 0; y < height; y++)
+                {
+                    if (zeroPoints.Any(arg => arg.x == x || arg.y == y))
+                    {
+                        source[y, x] = 0;
+                    }
+                }
+            }
+
+            return source;
         }
     }
 }

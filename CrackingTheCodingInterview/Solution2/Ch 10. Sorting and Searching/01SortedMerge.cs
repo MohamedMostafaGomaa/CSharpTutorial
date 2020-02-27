@@ -1,20 +1,17 @@
-﻿using ctci.Contracts;
-using ctci.Library;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
 
-namespace Chapter10
+namespace Ch_10.Sorting_and_Searching
 {
-    public class Q10_01_Sorted_Merge : Question
+    public static class SortedMerge
     {
-        /// <summary>
-        /// Merges array
-        /// </summary>
-        /// <param name="a">first array</param>
-        /// <param name="b">second array</param>
-        /// <param name="lastA">number of "real" elements in a</param>
-        /// <param name="lastB">number of "real" elements in b</param>
-        public int[] Merge(int[] a, int[] b, int lastA, int lastB)
+        public static int[] Merge(int[] a, int[] b, int lastA)
         {
+            int lastB = b.Length;
             int indexMerged = lastB + lastA - 1; /* Index of last location of merged array */
             int indexA = lastA - 1; /* Index of last element in array b */
             int indexB = lastB - 1; /* Index of last element in array a */
@@ -38,12 +35,19 @@ namespace Chapter10
             return a;
         }
 
-        public override void Run()
+    }
+
+    [TestFixture]
+    public class SortedMergeTest
+    {
+        [TestCase("aabcccccaaa")]
+        public void TestSortedMerge(string input)
         {
+
             int[] a = new int[] { 2, 3, 4, 5, 6, 8, 10, 100, 0, 0, 0, 0, 0, 0 };
             int[] b = new int[] { 1, 4, 7, 6, 7, 7 };
-            Merge(a, b, 8, 6);
-            Console.WriteLine(AssortedMethods.ArrayToString(a));
+            int [] result = SortedMerge.Merge (a, b, 8);
         }
+
     }
 }

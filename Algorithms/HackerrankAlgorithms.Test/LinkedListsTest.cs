@@ -33,6 +33,26 @@ namespace HackerrankAlgorithms.Test
         }
 
 
+        [Test]
+        [TestCase(new int[] { 1, 2, 3, 4, 5 }, new int[] { 1, 2, 3, 4, 5 })]
+        public void insertNodeAtTailTest(int[] llistArr, int[] llistArrExpected)
+        {
+           
+            SinglyLinkedListNode head = null;
+            List<int?> resultList = new List<int?>();
+
+            for (int i = 0; i < llistArr.Length; i++)
+            {
+                SinglyLinkedListNode llist_head = LinkedListsSamples.insertNodeAtTail(head, llistArr[i]);
+
+                head = llist_head;
+               
+            }
+
+            int?[] resultArr = LinkedListsSamples.printSinglyLinkedList(head);
+
+            Assert.AreEqual(resultArr, llistArrExpected);
+        }
 
 
         [Test]
@@ -49,6 +69,23 @@ namespace HackerrankAlgorithms.Test
             int?[] resultArr = LinkedListsSamples.printSinglyLinkedList(linkdedList, linkdedList[0].data);
 
             Assert.AreEqual(resultArr, llistArrExpected);
+        }
+
+
+        [Test]
+        [TestCase(new int[] { 20, 6, 2, 19, 7, 4, 15, 9 }, new int[] { 20, 6, 2, 7, 4, 15, 9 }, 3)]
+        public void DeleteNodeTest2(int[] llistArr, int[] llistArrExpected, int position)
+        {
+            SinglyLinkedListNode linkdedList = LinkedListsSamples.BuildLinkedList2(llistArr);
+
+            List<SinglyLinkedListNode> linkdedListResult = new List<SinglyLinkedListNode>();
+
+            SinglyLinkedListNode linkdeListNode = LinkedListsSamples.deleteNode(linkdedList, position);
+
+
+            //int?[] resultArr = LinkedListsSamples.printSinglyLinkedList(linkdeListNode, ta);
+
+            //Assert.AreEqual(resultArr, llistArrExpected);
         }
     }
 }

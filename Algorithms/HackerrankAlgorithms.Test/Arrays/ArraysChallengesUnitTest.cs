@@ -18,5 +18,14 @@ namespace HackerrankAlgorithms.Test.Arrays
             int[] arrResult = ArraysChallenges.reverseArray(arrInput);
             Assert.AreEqual(arrResult, arrExpected);
         }
+
+
+        [Test]
+        [TestCase(new string[] { "D","C", "B", "A" }, new string[] {"A", "B", "C", "D" })]
+        public void reverseArrayTest(string[] arrInput, string[] arrExpected)
+        {
+            string[] arrResult = ArraysChallenges.reverseArray(arrInput);
+            Assert.AreEqual(arrResult, arrExpected);
+        }
     }
 }

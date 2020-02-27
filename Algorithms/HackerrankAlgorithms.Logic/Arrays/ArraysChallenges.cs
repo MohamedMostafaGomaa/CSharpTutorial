@@ -20,5 +20,18 @@ namespace HackerrankAlgorithms.Logic
 
         }
 
+
+        public static string[] reverseArray(string[] a)
+        {
+            List<string> intList = new List<string>();
+            for (int i = a.Length - 1; i >= 0; i--)
+            {
+                intList.Add(a[i]);
+            }
+
+            return intList.ToArray();
+
+        }
+
     }
 }

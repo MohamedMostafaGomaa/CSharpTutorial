@@ -14,6 +14,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrackingTheCodingInterview\Solution1\Ch 01. Arrays and Strings\Ch 01. Arrays and Strings.csproj" />
+    <ProjectReference Include="..\CrackingTheCodingInterview\Solution1\Ch 10. Sorting and Searching\Ch 10. Sorting and Searching.csproj" />
+    <ProjectReference Include="..\CrackingTheCodingInterview\Solution1\ctci.Library\ctci.Library.csproj" />
   </ItemGroup>
 
 </Project>

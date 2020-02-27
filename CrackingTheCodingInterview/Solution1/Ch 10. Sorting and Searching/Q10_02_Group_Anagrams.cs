@@ -8,7 +8,7 @@ namespace Chapter10
 {
     public class Q10_02_Group_Anagrams : Question
     {
-        private class AnagramComparator : IComparer
+        public class AnagramComparator : IComparer
         {
             private string SortChars(string s)
             {
@@ -23,14 +23,14 @@ namespace Chapter10
             }
         }
 
-        private string SortChars(string s)
+        public string SortChars(string s)
         {
             char[] content = s.ToCharArray();
             Array.Sort<char>(content);
             return new string(content);
         }
 
-        private void Sort(string[] array)
+        public string[] Sort(string[] array)
         {
             Dictionary<string, LinkedList<string>> hash = new Dictionary<string, LinkedList<string>>();
 
@@ -57,6 +57,8 @@ namespace Chapter10
                     index++;
                 }
             }
+
+            return array;
         }
 
         public override void Run()

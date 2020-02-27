@@ -147,5 +147,69 @@ namespace Tests
             Assert.That(result, Is.EqualTo(expexcted));
         }
 
+
+
+        [Test]
+        public void Should_set_all_row_cell_to_0_when_row_contains_0()
+        {
+            var matrix = new int[,]
+            {
+                {4, 0, 6}
+            };
+
+            var expected = new int[,]
+            {
+                {0, 0, 0}
+            };
+
+           var result = new Q1_08_Zero_Matrix().SetZeroRowCol(matrix);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Should_set_all_Col_cell_to_0_when_col_contains_0()
+        {
+            var matrix = new int[,]
+            {
+                {4},
+                {0},
+                {6}
+            };
+
+            var expected = new int[,]
+            {
+                {0},
+                {0},
+                {0}
+            };
+
+            var result = new Q1_08_Zero_Matrix().SetZeroRowCol(matrix);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Should_set_all_Col_and_row_cell_to_0_when_contains_0()
+        {
+            var matrix = new int[,]
+            {
+               {1,2,3},
+               {4,0,6 },
+               {7,8,9 }
+            };
+
+            var expected = new int[,]
+            {
+                {1,0,3},
+               {0,0,0 },
+               {7,0,9 }
+            };
+
+            var result = new Q1_08_Zero_Matrix().SetZeroRowCol(matrix);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
     }
 }

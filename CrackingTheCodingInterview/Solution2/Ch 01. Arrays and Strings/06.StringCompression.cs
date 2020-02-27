@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace ArraysAndStrings
             var count = 0;
             foreach (var c in source)
             {
-				if (lastChar != c)
+                if (lastChar != c)
                 {
                     dest.AppendFormat("{0}{1}", lastChar, count);
                     lastChar = c;
@@ -34,6 +35,77 @@ namespace ArraysAndStrings
             dest.AppendFormat("{0}{1}", lastChar, count);
 
             return dest.Length < source.Length ? dest.ToString() : source;
+        }
+
+        public static string CompressLowerCase2(string source)
+        {
+
+            char[] sourceArr = source.ToCharArray();
+
+            Dictionary<char, int> sourceCharactersCount = new Dictionary<char, int>();
+
+            Hashtable ht = new Hashtable();
+
+            for (int i = 0; i < sourceArr.Length - 1; i++)
+            {
+                if (ht.ContainsKey(sourceArr[i]))
+                {
+
+                    int count = int.Parse(ht[sourceArr[i]].ToString());
+                    ht[sourceArr[i]] = count + 1;
+
+
+                }
+                else
+                {
+                    ht.Add(sourceArr[i], 1);
+                }
+
+            }
+
+            StringBuilder strbuilder = new StringBuilder();
+
+            foreach (DictionaryEntry item in ht)
+            {
+                strbuilder.Append(item.Key.ToString() + item.Value.ToString());
+            }
+
+
+            return strbuilder.ToString();
+        }
+
+
+        public static string CompressLowerCase3(string source)
+        {
+
+            char[] sourceArr = source.ToCharArray();
+
+            string last = string.Empty;
+            int count = 0;
+
+            StringBuilder strbuilder = new StringBuilder();
+            for (int i = 0; i < sourceArr.Length; i++)
+            {
+                string current = sourceArr[i].ToString();
+                if (last == current)
+                {
+                    count++;
+                    if (i == sourceArr.Length - 1)
+                    {
+                        strbuilder.Append(current + count.ToString());
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(last))
+                        strbuilder.Append(last + count.ToString());
+                    last = current;
+                    count = 1;
+                }
+
+            }
+
+            return strbuilder.ToString();
         }
     }
 
@@ -59,10 +131,20 @@ namespace ArraysAndStrings
             return input.CompressLowerCase();
         }
 
-        [TestCase("aabcccccaaa", ExpectedResult="a2b1c5a3")]
+        [TestCase("aabcccccaaa", ExpectedResult = "a2b1c5a3")]
+        public string Should_count_each_group_of_charByHashTable(string input)
+        {
+            var result = StringCompressionExt.CompressLowerCase2(input);
+
+            return result;
+
+        }
+
+
+        [TestCase("aabcccccaaa", ExpectedResult = "a2b1c5a3")]
         public string Should_count_each_group_of_char(string input)
-		{
-            var result = input.CompressLowerCase();
+        {
+            var result = StringCompressionExt.CompressLowerCase3(input);
             return result;
 
         }
